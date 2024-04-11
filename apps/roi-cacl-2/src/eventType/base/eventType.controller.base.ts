@@ -1050,4 +1050,27 @@ export class EventTypeControllerBase {
       select: { id: true },
     });
   }
+
+  @common.Get("/:id/roi-dto")
+  @swagger.ApiOkResponse({
+    type: Booking,
+  })
+  @swagger.ApiNotFoundResponse({
+    type: errors.NotFoundException,
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async RoiAPI(
+    @common.Query()
+    query: BookingFindManyArgs,
+    @common.Body()
+    body: string
+  ): Promise<Booking> {
+    const args = {
+      prop2: query,
+      property1: body,
+    };
+    return this.service.RoiAPI(args);
+  }
 }

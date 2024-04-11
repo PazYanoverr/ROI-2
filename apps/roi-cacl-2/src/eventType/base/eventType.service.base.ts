@@ -26,6 +26,9 @@ import {
   HashedLink as PrismaHashedLink,
 } from "@prisma/client";
 
+import { RoiDto } from "../RoiDto";
+import { Booking } from "../../booking/base/Booking";
+
 export class EventTypeServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
 
@@ -159,5 +162,8 @@ export class EventTypeServiceBase {
         where: { id: parentId },
       })
       .hashedLink();
+  }
+  async RoiAPI(args: RoiDto): Promise<Booking> {
+    throw new Error("Not implemented");
   }
 }

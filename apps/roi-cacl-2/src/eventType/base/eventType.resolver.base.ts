@@ -36,6 +36,7 @@ import { Team } from "../../team/base/Team";
 import { Schedule } from "../../schedule/base/Schedule";
 import { DestinationCalendar } from "../../destinationCalendar/base/DestinationCalendar";
 import { HashedLink } from "../../hashedLink/base/HashedLink";
+import { RoiDto } from "../RoiDto";
 import { EventTypeService } from "../eventType.service";
 @graphql.Resolver(() => EventType)
 export class EventTypeResolverBase {
@@ -305,5 +306,13 @@ export class EventTypeResolverBase {
       return null;
     }
     return result;
+  }
+
+  @graphql.Query(() => Booking)
+  async RoiAPI(
+    @graphql.Args()
+    args: RoiDto
+  ): Promise<Booking> {
+    return this.service.RoiAPI(args);
   }
 }
